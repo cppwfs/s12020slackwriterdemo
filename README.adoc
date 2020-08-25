@@ -1,0 +1,44 @@
+==  Introduction
+
+This is a Batch/Task application has a jdbc reader and a slack writer that sends out a slack message for each SKU that has been ordered more than 2 times.
+
+== Build the project
+
+=== To build the demo project
+
+```
+./mvnw clean package
+```
+
+=== To build the docker image
+```
+./mvnw -DskipTests -U package dockerfile:build
+```
+NOTE: Make sure you are using Java 8 when building docker image.
+
+=== To create and seed the purchase order table execute the DDL below.
+
+```
+CREATE TABLE purchase_orders
+(
+   user_id int(11),
+   sku bigint(11),
+   quantity int(11),
+   amount decimal(6,2),
+   mode varchar(255)
+)
+;
+```
+
+```
+INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (15678, 102452676, 1, 19.99, 'debit');
+INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (19854, 102459750, 3, 2.99, 'cash');
+INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (21654, 102453548, 3, 9.99, 'credit');
+INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (9876, 102454444, 1, 14.99, 'debit');
+INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (11119, 102451546, 3, 9.99, 'cash');
+
+```
+
+=== Establish the URL for Slack using the following property
+
+`io.spring.slack.url=<Your slack URL>`

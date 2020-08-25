@@ -1,0 +1,6 @@
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          task: debug
