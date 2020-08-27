@@ -14,19 +14,15 @@
  *  limitations under the License.
  */
 
-package io.spring.batchlab.configuration;
+package io.spring.batchlab;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@ConfigurationProperties(prefix = "io.spring.slack")
-public class BatchSlackProperties {
-	private String url;
+@SpringBootApplication
+public class PurchaseOrderSlackApplication {
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
+	public static void main(String[] args) {
+		SpringApplication.run(PurchaseOrderSlackApplication.class, args);
 	}
 }

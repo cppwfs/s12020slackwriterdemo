@@ -14,15 +14,29 @@
  *  limitations under the License.
  */
 
-package io.spring.batchlab;
+package io.spring.batchlab.configuration;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@SpringBootApplication
-public class BatchSlackApplication {
+@ConfigurationProperties(prefix = "io.spring.slack")
+public class PurchaseOrderSlackProperties {
+	private String url;
 
-	public static void main(String[] args) {
-		SpringApplication.run(BatchSlackApplication.class, args);
+	private int quantityLimit = 2;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public int getQuantityLimit() {
+		return quantityLimit;
+	}
+
+	public void setQuantityLimit(int quantityLimit) {
+		this.quantityLimit = quantityLimit;
 	}
 }

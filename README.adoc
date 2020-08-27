@@ -1,6 +1,6 @@
 ==  Introduction
 
-This is a Batch/Task application has a jdbc reader and a slack writer that sends out a slack message for each SKU that has been ordered more than 2 times.
+This is a Task application has a reads purchase orders from a JDBC database that sends out a slack message for each SKU that has been ordered more than a configured number of  times.
 
 == Build the project
 
@@ -39,6 +39,11 @@ INSERT INTO purchase_orders (user_id, sku, quantity, amount, mode) VALUES (11119
 
 ```
 
-=== Establish the URL for Slack using the following property
+=== Configurations
+
+==== Establish the URL for Slack using the following property
 
 `io.spring.slack.url=<Your slack URL>`
+
+==== Establish the quantity limit to determine what PO's require an alert.  Default is `2`.
+`io.spring.slack.quantityLimit=<new limit>`
